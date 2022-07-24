@@ -1,0 +1,105 @@
+; author: CI/CD
+
+% test, first
+
+# trivial case -> "foo"
+echo "foo"
+
+# map -> "_foo_"
+echo "<map1>"
+
+# expand -> "foo"
+echo "<expand1>"
+
+# duplicated lines -> "foo\nlorem ipsum\nlorem ipsum\nbaz"
+echo foo
+echo lorem ipsum
+echo lorem ipsum
+echo baz
+
+# empty line -> "foo\n\n\nbar"
+echo "$(cat <<EOF
+foo
+
+
+bar
+EOF
+)"
+
+# sed with replacement -> "172.17.0.2"
+echo "8.8.8.8 via 172.17.0.1 dev eth0  src 172.17.0.2" | sed -E 's/.*src ([0-9.]+).*/\1/p' | head -n1
+
+# 2nd column with default delimiter -> "rust is cool"
+echo "<language> is cool"
+
+# 2nd column with custom delimiter -> "clojure is cool"
+echo "<language2> is cool"
+
+# multiple words -> "lorem foo bar ipsum"
+echo "lorem <multiword> ipsum"
+
+# variable dependency, full -> "2 12 a 2"
+echo "<x> <x2> <y> <x>"
+
+; # variable dependency, we can ignore intermediate values -> "foo 12"
+; printf "foo "; : <x>; echo "<x2>"
+
+# nested unused value -> "path: /my/pictures"
+echo "path: <pictures_folder>"
+
+# multiline command: no backslash -> "foo\nbar"
+echo "foo"
+echo "bar"
+
+# multiline command: with backslash -> "lorem ipsum\nno match"
+echo 'lorem ipsum'
+echo "foo" \
+    | grep -q "bar" \
+    && echo "match" \
+    || echo "no match"
+
+# multiline variable -> "foo bar"
+echo "<multilinevar>"
+
+# helper -> "inside helper: 42"
+myhelperfn 42
+
+$ x: echo '2'
+$ x2: echo "$((x+10))"
+$ y: echo 'a'
+$ language: echo '0  rust      rust-lang.org' --- --column 2
+$ language2: echo '1;clojure;clojure.org' --- --column 2 --delimiter ';'
+$ multiword: echo 'foo bar'
+$ pictures_folder: echo "/my/pictures"
+$ map1: echo "foo" --- --map 'echo _$(cat)_'
+$ multilinevar: echo "xoo yar" \
+   | tr 'x' 'f' \
+   | tr 'y' 'b'
+$ expand1: echo "foo" --- --expand
+
+
+# this should be displayed -> "hi"
+echo hi
+
+
+% test, second
+
+@ test, first
+@ test, third
+
+# nested used value -> "path: /my/pictures/wallpapers"
+echo "path: <wallpaper_folder>"
+
+# same command as before -> "12"
+: <x>; echo "<x2>"
+
+# the order isn't relevant -> "br"
+echo "<country>"
+
+$ wallpaper_folder: echo "<pictures_folder>/wallpapers"
+
+
+% test, third
+
+; this cheathsheet doesnt have any commands
+$ country: echo "br"
