@@ -1,7 +1,6 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-neofetch
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -132,12 +131,12 @@ unset __conda_setup
 # Increase History Size (jb)
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
-
 setopt INC_APPEND_HISTORY
 export HISTTIMEFORMAT="[%F %T] "
-
 setopt EXTENDED_HISTORY
-
 setopt HIST_IGNORE_ALL_DUPS
 
+# Add Java to PATH
+export JAVA_HOME="/~/Coding/jdk-19"
+export PATH=$JAVA_HOME/bin:$PATH
 
