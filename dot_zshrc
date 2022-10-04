@@ -137,6 +137,6 @@ setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
 # Add Java to PATH
-export JAVA_HOME="/~/Coding/jdk-19"
+export JAVA_HOME="/home/chime/Coding/jdk-19"
 export PATH=$JAVA_HOME/bin:$PATH
 
