@@ -182,3 +182,183 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 # echo "- Install Bitwarden browser extension"
 # echo "- Install Nvidia drivers (Fedora) after reboot"
 #
+#---
+# - name: Bootstrap a new Linux machine
+#   hosts: localhost
+#   become: yes
+#   gather_facts: yes
+#
+#   vars:
+#     fedora_packages:
+#       - firefox
+#       - fastfetch
+#       - htop
+#       - wireshark
+#       - vim
+#       - vlc
+#       - gimp
+#       - zsh
+#       - neovim
+#       - tmux
+#       - git-delta
+#       - wl-clipboard
+#       - bleachbit
+#       - flatpak
+#       - discord
+#       - ripgrep
+#       - fd
+#       - fzf
+#       - kitty
+#       - gnome-tweaks
+#       - unzip
+#
+#     ubuntu_packages:
+#       - firefox
+#       - fastfetch
+#       - htop
+#       - wireshark
+#       - vim
+#       - vlc
+#       - gimp
+#       - zsh
+#       - gnome-tweaks
+#       - gnome-logs
+#       - cheese
+#       - notepadqq
+#       - ubuntu-restricted-extras
+#       - git
+#       - unzip
+#       - curl
+#       - wget
+#       - gpg
+#       - tmux
+#       - neovim
+#       - git-delta
+#       - synaptic
+#       - ripgrep
+#       - fd-find
+#       - fzf
+#       - bleachbit
+#       - wl-clipboard
+#       - flatpak
+#
+#   tasks:
+#
+#     - name: Print detected OS
+#       debug:
+#         msg: "Detected OS is {{ ansible_distribution }}"
+#
+#     - name: Fedora - add RPM Fusion nonfree repo
+#       dnf:
+#         name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts.distribution_major_version }}.noarch.rpm"
+#         state: present
+#       when: ansible_distribution == "Fedora"
+#
+#     - name: Fedora - update packages
+#       dnf:
+#         name: "*"
+#         state: latest
+#       when: ansible_distribution == "Fedora"
+#
+#     - name: Fedora - install packages
+#       dnf:
+#         name: "{{ fedora_packages }}"
+#         state: present
+#       when: ansible_distribution == "Fedora"
+#
+#     - name: Ubuntu - add PPAs
+#       apt_repository:
+#         repo: "{{ item }}"
+#         state: present
+#       loop:
+#         - ppa:zhangsongcui3371/fastfetch
+#         - ppa:neovim-ppa/unstable
+#       when: ansible_distribution == "Ubuntu"
+#
+#     - name: Ubuntu - update apt cache
+#       apt:
+#         update_cache: yes
+#       when: ansible_distribution == "Ubuntu"
+#
+#     - name: Ubuntu - upgrade packages
+#       apt:
+#         upgrade: dist
+#       when: ansible_distribution == "Ubuntu"
+#
+#     - name: Ubuntu - install packages
+#       apt:
+#         name: "{{ ubuntu_packages }}"
+#         state: present
+#       when: ansible_distribution == "Ubuntu"
+#
+#     - name: Add flathub remote if missing
+#       command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#       changed_when: false
+#
+#     - name: Install Spotify via Flatpak
+#       flatpak:
+#         name: com.spotify.Client
+#         state: present
+#         remote: flathub
+#
+#     - name: Download JetBrains Mono Nerd Font
+#       get_url:
+#         url: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+#         dest: /tmp/JetBrainsMono.tar.xz
+#
+#     - name: Create fonts directory
+#       file:
+#         path: "{{ ansible_env.HOME }}/.local/share/fonts"
+#         state: directory
+#         mode: '0755'
+#
+#     - name: Extract JetBrains Mono fonts
+#       unarchive:
+#         src: /tmp/JetBrainsMono.tar.xz
+#         dest: "{{ ansible_env.HOME }}/.local/share/fonts"
+#         remote_src: yes
+#
+#     - name: Refresh font cache
+#       command: fc-cache -fv
+#
+#     - name: Change default shell to zsh
+#       user:
+#         name: "{{ ansible_env.USER }}"
+#         shell: /usr/bin/zsh
+#
+#     - name: Install Oh-My-Zsh (unattended)
+#       become: false
+#       shell: |
+#         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+#       args:
+#         creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+#
+#     - name: Clone zsh-autosuggestions plugin
+#       git:
+#         repo: https://github.com/zsh-users/zsh-autosuggestions
+#         dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+#         depth: 1
+#
+#     - name: Clone zsh-syntax-highlighting plugin
+#       git:
+#         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+#         dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+#         depth: 1
+#
+#     - name: Clone powerlevel10k theme
+#       git:
+#         repo: https://github.com/romkatv/powerlevel10k.git
+#         dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
+#         depth: 1
+#
+#     - name: Show reboot and manual tasks message
+#       debug:
+#         msg: |
+#           ✅ Bootstrap completed!
+#
+#           🔄 You should now reboot the system.
+#
+#           🧠 Manual tasks to complete:
+#           - Install Bitwarden browser extension
+#           - Install Nvidia drivers (Fedora) after reboot
+
