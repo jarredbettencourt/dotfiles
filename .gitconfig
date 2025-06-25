@@ -1,0 +1,88 @@
+[user]
+    name = Jarred Bettencourt
+    email = jbettencourt10@gmail.com
+	signingkey = 09EDF81C2BC051CE400C0F288B0492628E865D1D
+
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
+
+# useful for work
+# [includeIf "gitdir:~/code/<work>/"]
+# path = "~/code/<work>/.gitconfig"
+# this is just a test
+# This is another test
+[core]
+    editor = nvim
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+    # I'd probably include this if it wouldn't cause merge conflicts
+    # whitespace = fix       # Fixes whitespace errors on commit
+    fileMode = false       # Disables tracking of file mode changes
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true 
+
+[color]
+    ui = auto
+
+[merge]
+    conflictstyle = zdiff3  # Provides a clearer 3-way merge diff
+    ff = only
+
+[diff]
+    tool = vimdiff
+    renames = copies       # Enables detection of file renames as copies
+	algorithm = histogram
+    colorMoved = default
+
+[fetch]
+    prune = true
+
+[pull]
+	rebase = true
+	ff = only
+
+[rerere]
+    enabled = true          # Enable reuse recorded resolution
+    autoupdate = true       # Automatically update rerere cache with new resolutions
+
+[rebase]
+    autosquash = true       # Automatically squash commits marked as fixup or squash
+    autostash = true
+
+[help]
+    autocorrect = prompt
+
+[prompt]
+    branch = true
+
+[credential]
+    helper = cache         # Caches credentials for a time (useful for frequent pushes)
+
+[commit]
+    verbose = true
+    gpgsign = true
+	template = ~/.gitmessage
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    last = log -1 HEAD     # Adds an alias to check the last commit
+    fwl = push --force-with-lease
+    alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+
+[push]
+    default = current
+    followTags = true      # Automatically pushes tags related to commits
+    autoSetupRemote = true
+[gpg]
+	program = gpg
