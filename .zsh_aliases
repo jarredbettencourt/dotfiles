@@ -1,0 +1,18 @@
+# Personal Aliases
+alias vim="nvim"
+alias view="nvim -R"
+alias grep="rg"
+alias find="fd"
+alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
+
+# Custom function
+resync() {
+  rsync -aP --compress --delete --exclude='.git' --backup ${1} ${2}
+}
+
+if [[ $TERM == "xterm-kitty" ]]; then
+  alias ssh="kitten ssh"
+else
+  alias ssh="ssh"
+fi
+
