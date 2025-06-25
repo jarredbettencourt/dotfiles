@@ -6,8 +6,8 @@ cd ~
 # Paste ssh key into ~/.ssh folder from USB drive
 # Run the following line for importing gpg key
 # gpg --import private-key.asc
-# Run the following two lines
-        # sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:jbettencourt10/dotfiles.git
+# Install yadm
+# Run 'yadm clone https://github.com/jbettencourt10/dotfiles.git'
 # Then run this script
 
 # Detect Linux distribution
