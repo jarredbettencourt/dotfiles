@@ -1,7 +1,8 @@
 # What makes sense here is this:
 # Install OS
-# Paste ssh key into ~/.ssh folder from USB drive
-# Run the following line for importing gpg key
+# Get into bitwarden on firefox (or install bitwarden app on linux)
+# Generate new ssh key (TODO: add this to ansible) and put it in github
+# Run the following line for importing gpg key (after getting in bitwarden)
 # gpg --import private-key.asc
 # Install ansible playbook
 # Then run this script
