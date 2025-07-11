@@ -2,6 +2,7 @@
 # Install OS
 # Get into bitwarden on firefox (or install bitwarden app on linux)
 # Generate new ssh key (TODO: add this to ansible) and put it in github
+# NOTE: jb: Is it worth making a new ssh key for each device on flash? or storing ssh keys in Bitwarden and then importing?
 # Run the following line for importing gpg key (after getting in bitwarden)
 # gpg --import private-key.asc
 # Install ansible playbook
