@@ -49,9 +49,9 @@
 	rebase = true
 	ff = only
 
-[rerere]
-    enabled = true          # Enable reuse recorded resolution
-    autoupdate = true       # Automatically update rerere cache with new resolutions
+; [rerere]
+;     enabled = true          # Enable reuse recorded resolution
+;     autoupdate = true       # Automatically update rerere cache with new resolutions
 
 [rebase]
     autosquash = true       # Automatically squash commits marked as fixup or squash
