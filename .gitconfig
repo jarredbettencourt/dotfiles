@@ -1,7 +1,7 @@
 [user]
     name = Jarred Bettencourt
-    email = jbettencourt10@gmail.com
-	signingkey = 09EDF81C2BC051CE400C0F288B0492628E865D1D
+    email = jarredbettencourt@gmail.com
+    signingkey = 0362FFB9954EBFB4A3E67194A2D76301E1C90404
 
 [url "git@github.com:"]
 	insteadOf = "https://github.com/"
@@ -9,14 +9,14 @@
 # useful for work
 # [includeIf "gitdir:~/code/<work>/"]
 # path = "~/code/<work>/.gitconfig"
-# this is just a test
-# This is another test
+#
 [core]
     editor = nvim
     autocrlf = input
     excludesfile = ~/.gitignore_global
     # I'd probably include this if it wouldn't cause merge conflicts
     # whitespace = fix       # Fixes whitespace errors on commit
+    # NOTE: jb: Do i want this?
     fileMode = false       # Disables tracking of file mode changes
     pager = delta
 
@@ -28,6 +28,8 @@
 
 [delta]
     navigate = true 
+    line-numbers = true
+    side-by-side = true
 
 [color]
     ui = auto
@@ -49,9 +51,9 @@
 	rebase = true
 	ff = only
 
-; [rerere]
-;     enabled = true          # Enable reuse recorded resolution
-;     autoupdate = true       # Automatically update rerere cache with new resolutions
+[rerere]
+    enabled = true          # Enable reuse recorded resolution
+    autoupdate = true       # Automatically update rerere cache with new resolutions
 
 [rebase]
     autosquash = true       # Automatically squash commits marked as fixup or squash
@@ -66,10 +68,16 @@
 [credential]
     helper = cache         # Caches credentials for a time (useful for frequent pushes)
 
+[tag]
+    gpgSign = true
+
 [commit]
     verbose = true
     gpgsign = true
 	template = ~/.gitmessage
+
+[status]
+    showUntrackedFiles = all
 
 [alias]
     co = checkout
@@ -79,10 +87,14 @@
     last = log -1 HEAD     # Adds an alias to check the last commit
     fwl = push --force-with-lease
     alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    lg = log --graph --decorate --oneline --all
+    unstage = reset HEAD --
+    amend = commit --amend
 
 [push]
-    default = current
+    default = simple
     followTags = true      # Automatically pushes tags related to commits
     autoSetupRemote = true
+
 [gpg]
 	program = gpg
