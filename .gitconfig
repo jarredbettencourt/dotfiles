@@ -1,6 +1,6 @@
 [user]
     name = Jarred Bettencourt
-    email = jarredbettencourt@gmail.com
+    email = ${GIT_AUTHOR_EMAIL}
     signingkey = 0362FFB9954EBFB4A3E67194A2D76301E1C90404
 
 [url "git@github.com:"]
