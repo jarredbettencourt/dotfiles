@@ -29,13 +29,6 @@ bindkey -M viins '^F' autosuggest-accept
 # User configuration
 export EDITOR="nvim"
 
-if [[ $(hostname) == "tsc-jarred-laptop" ]]; then
-    export GIT_AUTHOR_EMAIL=jarred.bettencourt@tsc.com
-else
-    export GIT_AUTHOR_EMAIL=jarredbettencourt@gmail.com
-fi
-
-
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

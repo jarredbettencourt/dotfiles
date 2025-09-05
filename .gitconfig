@@ -1,10 +1,13 @@
 [user]
     name = Jarred Bettencourt
-    email = ${GIT_AUTHOR_EMAIL}
+    email = jarredbettencourt@gmail.com
     signingkey = 0362FFB9954EBFB4A3E67194A2D76301E1C90404
 
+[includeIf "gitdir:~/code/work/"]
+    path = ~/.gitconfig-work
+
 [url "git@github.com:"]
-	insteadOf = "https://github.com/"
+    insteadOf = "https://github.com/"
 
 # useful for work
 # [includeIf "gitdir:~/code/<work>/"]
@@ -41,15 +44,15 @@
 [diff]
     tool = vimdiff
     renames = copies       # Enables detection of file renames as copies
-	algorithm = histogram
+    algorithm = histogram
     colorMoved = default
 
 [fetch]
     prune = true
 
 [pull]
-	rebase = true
-	ff = only
+    rebase = true
+    ff = only
 
 [rerere]
     enabled = true          # Enable reuse recorded resolution
@@ -74,7 +77,7 @@
 [commit]
     verbose = true
     gpgsign = true
-	template = ~/.gitmessage
+    template = ~/.gitmessage
 
 [status]
     showUntrackedFiles = all
@@ -97,4 +100,4 @@
     autoSetupRemote = true
 
 [gpg]
-	program = gpg
+    program = gpg
