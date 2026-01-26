@@ -9,10 +9,6 @@
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
 
-# useful for work
-# [includeIf "gitdir:~/code/<work>/"]
-# path = "~/code/<work>/.gitconfig"
-#
 [core]
     editor = nvim
     autocrlf = input
