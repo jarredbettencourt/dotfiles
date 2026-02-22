@@ -37,18 +37,16 @@ _comp_options+=(globdots) # With hidden files
 # TODO: find a place for this file
 # source $ZDOTDIR/zsh/completion.zsh
 
-
 ##### STACK FOR DIRECTORIES #####
 setopt AUTO_PUSHD           # Push the current directory visited on the stack.
 setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
 setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
 
-
 ##### PLUGINS #####
 # Only load the plugins you want
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-# source <(fzf --zsh)
+source <(fzf --zsh)
 
 # Accept autosuggestion
 bindkey -M viins '^F' autosuggest-accept
@@ -66,7 +64,7 @@ source "$ZDOTDIR/.zsh_aliases"
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 [[ -f "$ZDOTDIR/.p10k.zsh" ]] && source "$ZDOTDIR/.p10k.zsh"
 
-##### Make VIM mode have beam/block for mode #####
+##### Make VIM mode for zsh have beam/block for mode #####
 cursor_mode() {
     # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
     cursor_block='\e[2 q'
