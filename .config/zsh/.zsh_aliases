@@ -22,7 +22,11 @@ alias grs='git remote show'
 alias glo='git log --pretty="oneline"'
 alias glol='git log --graph --oneline --decorate'
 
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
 # Custom function
 resync() {
   rsync -aP --compress --delete --exclude='.git' --backup ${1} ${2}
 }
+

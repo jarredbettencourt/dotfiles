@@ -21,9 +21,6 @@ set noshowmode
 " Enable break indent
 set breakindent
 
-" Show substitutions live in a split
-set inccommand=split
-
 " Highlight the current line
 set cursorline
 

@@ -116,5 +116,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-  export PATH="${PATH}:/home/chime/.cargo/bin/navi"
