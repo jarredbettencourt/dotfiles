@@ -48,7 +48,7 @@ setopt PUSHD_SILENT         # Do not print the directory stack after pushd or po
 # Only load the plugins you want
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source <(fzf --zsh)
+# source <(fzf --zsh)
 
 # Accept autosuggestion
 bindkey -M viins '^F' autosuggest-accept
@@ -93,7 +93,6 @@ cursor_mode() {
 }
 
 cursor_mode
-
 
 ##### Let me edit commands nvim #####
 autoload -Uz edit-command-line

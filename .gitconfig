@@ -3,8 +3,8 @@
     email = jarredbettencourt@gmail.com
     signingkey = 0362FFB9954EBFB4A3E67194A2D76301E1C90404
 
-[includeIf "gitdir:~/code/work/"]
-    path = ~/.gitconfig-work
+[includeIf "gitdir:/home/jarred/code/work/"]
+    path = /home/jarred/.gitconfig-work
 
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
