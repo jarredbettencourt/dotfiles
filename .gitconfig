@@ -6,9 +6,6 @@
 [includeIf "gitdir:/home/jarred/code/work/"]
     path = /home/jarred/.gitconfig-work
 
-[url "git@github.com:"]
-    insteadOf = "https://github.com/"
-
 [core]
     editor = nvim
     autocrlf = input
