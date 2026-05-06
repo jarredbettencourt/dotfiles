@@ -166,31 +166,6 @@
         name: "{{ ansible_env.USER }}"
         shell: /usr/bin/zsh
 
-    - name: Install Oh-My-Zsh (unattended)
-      become: false
-      shell: |
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-      args:
-        creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
-
-    - name: Clone zsh-autosuggestions plugin
-      git:
-        repo: https://github.com/zsh-users/zsh-autosuggestions
-        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-        depth: 1
-
-    - name: Clone zsh-syntax-highlighting plugin
-      git:
-        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-        depth: 1
-
-    - name: Clone powerlevel10k theme
-      git:
-        repo: https://github.com/romkatv/powerlevel10k.git
-        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
-        depth: 1
-
     - name: Show reboot and manual tasks message
       debug:
         msg: |
