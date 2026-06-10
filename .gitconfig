@@ -3,17 +3,13 @@
     email = jarredbettencourt@gmail.com
     signingkey = 0362FFB9954EBFB4A3E67194A2D76301E1C90404
 
-[includeIf "gitdir:/home/jarred/code/work/"]
-    path = /home/jarred/.gitconfig-work
-
 [core]
     editor = nvim
     autocrlf = input
     excludesfile = ~/.gitignore_global
     # I'd probably include this if it wouldn't cause merge conflicts
     whitespace = fix       # Fixes whitespace errors on commit
-    # NOTE: jb: Do i want this?
-    fileMode = false       # Disables tracking of file mode changes
+    fileMode = true       # Disables tracking of file mode changes
     pager = delta
 
 [init]
@@ -94,3 +90,6 @@
     helper = manager
     useHttpPath = true
     credentialStore = secretservice
+
+[includeIf "gitdir:/home/jarred/code/work/"]
+    path = /home/jarred/.gitconfig-work
